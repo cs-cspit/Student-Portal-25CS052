@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Support - StudentHub</title>
+  <meta name="description" content="Get in touch with StudentHub administrators, submit queries, and view office hours and location details.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-link" aria-label="StudentHub Home">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>StudentHub</span>
+      </a>
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="timetable.html">Timetable</a></li>
+          <li><a href="material.html">Material</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumbs">
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">Contact</li>
+    </ol>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <h1 id="contact-title">Contact Us</h1>
+    <p>Have questions about your enrollment, schedule, or portal access? Send us a ticket.</p>
+
+    <div class="grid-cols-2">
+      <!-- Contact Info Panel -->
+      <section class="panel" aria-labelledby="office-hours-heading">
+        <h2 id="office-hours-heading">Office Information</h2>
+        <p>Contact CHARUSAT administration or specific student services departments.</p>
+        
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+          <li>
+            <strong style="color: var(--text-main);">📍 Location:</strong>
+            <p style="margin-bottom: 0;">CHARUSAT Campus, Off Nadiad-Petlad Highway, Changa - 388421, District Anand, Gujarat, India</p>
+          </li>
+          <li>
+            <strong style="color: var(--text-main);">📧 Email Support:</strong>
+            <p style="margin-bottom: 0;"><a href="mailto:info@charusat.ac.in" style="color: var(--primary);">info@charusat.ac.in</a> | <a href="mailto:studentservices@charusat.ac.in" style="color: var(--primary);">studentservices@charusat.ac.in</a></p>
+          </li>
+          <li>
+            <strong style="color: var(--text-main);">📞 Telephone Helpline:</strong>
+            <p style="margin-bottom: 0;">+91 2697 265011 / +91 2697 265021</p>
+          </li>
+          <li>
+            <strong style="color: var(--text-main);">🕒 Office Hours:</strong>
+            <p style="margin-bottom: 0;">Monday - Saturday: 09:00 AM to 04:30 PM (Except public holidays & 2nd/4th Saturdays)</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Message Ticket Form -->
+      <section class="panel" aria-labelledby="form-ticket-heading">
+        <h2 id="form-ticket-heading">Submit a Support Ticket</h2>
+        
+        <form action="index.html" method="POST">
+          <div class="form-group">
+            <label for="ticket-name">Your Full Name</label>
+            <input type="text" id="ticket-name" name="ticket-name" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-email">Your Email Address</label>
+            <input type="email" id="ticket-email" name="ticket-email" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-category">Category</label>
+            <select id="ticket-category" name="ticket-category" required aria-required="true">
+              <option value="technical">Technical Glitch / Bug</option>
+              <option value="timetable">Timetable Discrepancy</option>
+              <option value="material">Missing Study Material</option>
+              <option value="other">Other Support Query</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-message">Message Details</label>
+            <textarea id="ticket-message" name="ticket-message" rows="5" required aria-required="true" placeholder="Describe your issue or query..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Support Ticket</button>
+        </form>
+      </section>
+    </div>
+        <div class="next-step-panel">
+      <div class="next-step-content">
+        <h3>Return to Main Portal Entrance</h3>
+        <p>Go back to the homepage to explore features or log in.</p>
+      </div>
+      <div>
+        <a href="index.html" class="btn btn-primary">Return Home</a>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>StudentHub</h4>
+        <p>Making campus services accessible, modern, and transparent for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <nav class="footer-section" aria-label="Quick Links">
+          <h4>Portal Links</h4>
+          <ul>
+            <li><a href="about.html">About Portal</a></li>            <li><a href="contact.html">Support Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-section" aria-label="Account Links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register.html">Create Account</a></li>          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 StudentHub. Accessibility Compliant (WCAG 2.1 AA).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub - Empowering Campus Life</title>
+  <meta name="description" content="Welcome to StudentHub, the central portal for students to manage timetable, courses, events, and community feedback.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-link" aria-label="StudentHub Home">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>StudentHub</span>
+      </a>
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="timetable.html">Timetable</a></li>
+          <li><a href="material.html">Material</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumbs">
+      <li aria-current="page">Home</li>
+    </ol>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <section class="panel" aria-labelledby="welcome-heading" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid rgba(37, 99, 235, 0.15);">
+      <h1 id="welcome-heading">CHARUSAT StudentHub</h1>
+      <p>The centralized academic portal for the <strong>Chandubhai S. Patel Institute of Technology (CSPIT)</strong> at <strong>Charotar University of Science and Technology</strong>. Empowering the next generation of engineers with real-time class tracking and unified learning resources.</p>
+      <div style="margin-top: 1.5rem;">
+        <a href="register.html" class="btn btn-primary" style="margin-right: 1rem;">Register Student Account</a>
+        <a href="login.html" class="btn btn-secondary">Student Gateway Log In</a>
+      </div>
+    </section>
+
+    <div class="grid-cols-3">
+      <article class="panel" aria-labelledby="feat-academic">
+        <h3 id="feat-academic">Academic Excellence</h3>
+        <p>CSPIT offers world-class undergraduate and postgraduate engineering courses accredited by NBA, designed to align with international professional standards.</p>
+      </article>
+
+      <article class="panel" aria-labelledby="feat-infrastructure">
+        <h3 id="feat-infrastructure">Campus Infrastructure</h3>
+        <p>Our students study in advanced computer labs, research centers, and smart lecture halls supported by high-speed fiber campus networks.</p>
+      </article>
+
+      <article class="panel" aria-labelledby="feat-chapters">
+        <h3 id="feat-chapters">Professional Chapters</h3>
+        <p>Participate in workshops, seminars, and networking sessions hosted by active on-campus student chapters of IEEE, ACM, and CSI.</p>
+      </article>
+    </div>
+        <div class="next-step-panel">
+      <div class="next-step-content">
+        <h3>Ready to Access Your Portal?</h3>
+        <p>Log in or create a student account to view class schedules and study materials.</p>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="login.html" class="btn btn-primary">Student Log In</a>
+        <a href="register.html" class="btn btn-secondary">Register Account</a>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>StudentHub</h4>
+        <p>Making campus services accessible, modern, and transparent for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <nav class="footer-section" aria-label="Quick Links">
+          <h4>Portal Links</h4>
+          <ul>
+            <li><a href="about.html">About Portal</a></li>            <li><a href="contact.html">Support Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-section" aria-label="Account Links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register.html">Create Account</a></li>          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 StudentHub. Accessibility Compliant (WCAG 2.1 AA).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

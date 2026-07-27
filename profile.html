@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - StudentHub</title>
+  <meta name="description" content="Manage your personal details, academic information, contact details, and account settings on your StudentHub profile page.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-link" aria-label="StudentHub Home">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>StudentHub</span>
+      </a>
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="timetable.html">Timetable</a></li>
+          <li><a href="material.html">Material</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="profile.html" aria-current="page">Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumbs">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li aria-current="page">Profile</li>
+    </ol>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <h1 id="profile-title">My Profile</h1>
+    <p>View and manage your personal, academic, and settings data below.</p>
+
+    <div class="grid-cols-3">
+      <!-- Profile Sidebar Card -->
+      <section class="panel" style="text-align: center;" aria-label="Avatar Overview">
+        <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 60px; height: 60px; color: #fff;" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2>JAY NAVADIYA</h2>
+        <p style="margin-bottom: 0.25rem; font-weight: 600;">Batch: 2025-29</p>
+        <p style="margin-bottom: 0.5rem; font-size: 0.9rem;">ID Reference: CSE-25CS052</p>
+        <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600;">Status: Active Enrollment</p>
+      </section>
+
+      <!-- Edit Form Card -->
+      <section class="panel" style="grid-column: span 2;" aria-labelledby="profile-settings">
+        <h2 id="profile-settings">Account Details</h2>
+        
+        <form action="profile.html" method="POST">
+          <fieldset>
+            <legend>Edit Student Information</legend>
+            
+            <div class="form-group">
+              <label for="student-name">Full Name</label>
+              <input type="text" id="student-name" name="student-name" value="JAY NAVADIYA" required aria-required="true">
+            </div>
+
+            <div class="form-group">
+              <label for="student-email">Email Address</label>
+              <input type="email" id="student-email" name="student-email" value="25cs052@charusat.edu.in" disabled aria-disabled="true" aria-describedby="email-disclaimer">
+              <span id="email-disclaimer" class="form-helper">Email address cannot be changed. Contact the administration desk.</span>
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Academic Enrollment Details</legend>
+
+            <div class="form-group">
+              <label for="student-enrollment">Enrollment Number</label>
+              <input type="text" id="student-enrollment" name="student-enrollment" value="25CS052" disabled aria-disabled="true">
+            </div>
+
+            <div class="form-group">
+              <label for="student-year">Academic Year</label>
+              <input type="text" id="student-year" name="student-year" value="2nd Year (Semester III)" disabled aria-disabled="true">
+            </div>
+
+            <div class="form-group">
+              <label for="student-batch">Academic Batch</label>
+              <input type="text" id="student-batch" name="student-batch" value="2025-29" disabled aria-disabled="true">
+            </div>
+
+            <div class="form-group">
+              <label for="student-dept">Department</label>
+              <input type="text" id="student-dept" name="student-dept" value="Computer Science & Engineering (CSE)" disabled aria-disabled="true">
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </div>
+        <div class="next-step-panel">
+      <div class="next-step-content">
+        <h3>Return to Student Dashboard</h3>
+        <p>Check notices, pending assignments, and active attendance status.</p>
+      </div>
+      <div>
+        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>StudentHub</h4>
+        <p>Making campus services accessible, modern, and transparent for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <nav class="footer-section" aria-label="Quick Links">
+          <h4>Portal Links</h4>
+          <ul>
+            <li><a href="about.html">About Portal</a></li>            <li><a href="contact.html">Support Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-section" aria-label="Account Links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register.html">Create Account</a></li>          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 StudentHub. Accessibility Compliant (WCAG 2.1 AA).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

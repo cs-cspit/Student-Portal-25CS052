@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Material - StudentHub</title>
+  <meta name="description" content="Download lecture slides, syllabus outlines, past papers, lab manuals, and notes on StudentHub Study Material page.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-link" aria-label="StudentHub Home">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>StudentHub</span>
+      </a>
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="timetable.html">Timetable</a></li>
+          <li><a href="material.html" aria-current="page">Material</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="contact.html">Contact</a></li>        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+    <ol class="breadcrumbs">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li aria-current="page">Material</li>
+    </ol>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    <section class="panel" aria-labelledby="material-heading">
+      <h1 id="material-heading">Study Materials & Resources</h1>
+      <p>Select a subject below to download reference books, syllabus copies, lab sheets, and class slides.</p>
+
+      <form style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;" role="search" aria-label="Study Material Search">
+        <div style="flex: 1; min-width: 250px;">
+          <label for="search-input" class="skip-link" style="position: static; padding: 0; width: auto; height: auto; overflow: visible; clip: auto;">Search Course Materials</label>
+          <input type="text" id="search-input" placeholder="Search by course code, keyword, or professor..." aria-label="Search study material files">
+        </div>
+        <button type="submit" class="btn btn-primary">Filter Resources</button>
+      </form>
+
+      <div class="grid-cols-2">
+        <!-- Web Development Frameworks resources -->
+        <article class="panel" aria-labelledby="wt-material">
+          <h2 id="wt-material" style="border: none; padding: 0; margin-bottom: 0.5rem;">Web Development Frameworks (ITUE204)</h2>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Instructor: CSE Department Faculty</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="WDF_Syllabus.pdf">
+                📄 Course Syllabus (PDF, 220KB)
+              </a>
+            </li>
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="WDF_Unit_1_Intro.pdf">
+                📄 Unit 1: Introduction to Framework Architectures (PDF, 1.4MB)
+              </a>
+            </li>
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="WDF_Lab_Manual.pdf">
+                📄 Practical Lab Manual: Setup Guidelines (PDF, 850KB)
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Data Structures & Algorithms resources -->
+        <article class="panel" aria-labelledby="daa-material">
+          <h2 id="daa-material" style="border: none; padding: 0; margin-bottom: 0.5rem;">Data Structures & Algorithms (CSUC201)</h2>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Instructor: CSE Department Faculty</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="FDSA_Syllabus.pdf">
+                📄 Course Syllabus & Reference Books (PDF, 180KB)
+              </a>
+            </li>
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="FDSA_Lecture_Notes_Trees.pdf">
+                📄 Lecture Notes: Binary Search Trees (PDF, 2.1MB)
+              </a>
+            </li>
+            <li>
+              <a href="#" style="color: var(--primary); text-decoration: none;" download="FDSA_Assignment_1.pdf">
+                📄 Problem Set 1: Time Complexity (PDF, 320KB)
+              </a>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+        <div class="next-step-panel">
+      <div class="next-step-content">
+        <h3>Discover Upcoming Campus Events</h3>
+        <p>Register for tech fests, chapter workshops, and cultural celebrations.</p>
+      </div>
+      <div>
+        <a href="events.html" class="btn btn-primary">Explore Campus Events</a>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>StudentHub</h4>
+        <p>Making campus services accessible, modern, and transparent for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <nav class="footer-section" aria-label="Quick Links">
+          <h4>Portal Links</h4>
+          <ul>
+            <li><a href="about.html">About Portal</a></li>            <li><a href="contact.html">Support Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-section" aria-label="Account Links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register.html">Create Account</a></li>          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 StudentHub. Accessibility Compliant (WCAG 2.1 AA).</p>
+    </div>
+  </footer>
+
+</body>
+</html>
