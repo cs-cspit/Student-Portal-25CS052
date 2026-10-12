@@ -1,20 +1,20 @@
-# Practical 8: StudentHub Relational Database Design & Secure PHP PDO Implementation
+# Practical 8: Campusly Relational Database Design & Secure PHP PDO Implementation
 
 **Course / Module:** Web Development & Database Management Systems  
-**System Name:** StudentHub  
+**System Name:** Campusly (formerly StudentHub)  
 **Date:** October 9, 2026  
 
 ---
 
 ## 📋 Overview & Problem Statement
 
-Design a robust relational database for the **StudentHub** platform covering **Students**, **Events**, and **Registrations**. Establish secure database connectivity using **PHP PDO (PHP Data Objects)** with comprehensive `try-catch` error handling and execute all queries using **Prepared Statements** to eliminate SQL injection vulnerabilities.
+Design a robust relational database for the **Campusly** platform covering **Students**, **Events**, and **Registrations**. Establish secure database connectivity using **PHP PDO (PHP Data Objects)** with comprehensive `try-catch` error handling and execute all queries using **Prepared Statements** to eliminate SQL injection vulnerabilities.
 
 ---
 
 ## 🗄️ Relational Schema Design (3NF Normalization)
 
-The database schema `studenthub` is divided into three relational tables adhering strictly to **Third Normal Form (3NF)**:
+The database schema `campusly` is divided into three relational tables adhering strictly to **Third Normal Form (3NF)**:
 
 ```
 +------------------+         +-----------------------+         +------------------+

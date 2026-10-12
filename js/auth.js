@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
       localStorage.setItem("studentLoggedIn", "true");
-      alert("Sign-in successful! Welcome to the StudentHub Portal.");
+      alert("Sign-in successful! Welcome to the Campusly Portal.");
       window.location.href = "dashboard.html";
     });
   }
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     registerForm.addEventListener("submit", function (e) {
       e.preventDefault();
       localStorage.setItem("studentLoggedIn", "true");
-      alert("Registration successful! Welcome to the StudentHub Portal.");
+      alert("Registration successful! Welcome to the Campusly Portal.");
       window.location.href = "dashboard.html";
     });
   }

@@ -1,46 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Time Table - StudentHub</title>
-  <meta name="description" content="View class timings, lecture locations, professor designations, and weekly schedules on the StudentHub Timetable page.">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/auth.js" defer></script>
-</head>
-<body>
+<?php
+/**
+ * Campusly Timetable (timetable.php)
+ */
 
-  <!-- Skip to Content Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+$pageTitle = "Class Timetable - Campusly";
+$activePage = "timetable.php";
 
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-link" aria-label="StudentHub Home">
-        <span class="logo-icon" aria-hidden="true"></span>
-        <span>StudentHub</span>
-      </a>
-      <nav class="primary-nav" aria-label="Main Navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="register.html">Register</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="timetable.html" aria-current="page">Timetable</a></li>
-          <li><a href="material.html">Material</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="contact.html">Contact</a></li>        </ul>
-      </nav>
-    </div>
-  </header>
+require_once __DIR__ . '/auth.php';
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header('Location: admin_dashboard.php');
+    exit;
+}
+require_login(['student']);
+require_once __DIR__ . '/includes/header.php';
+?>
 
   <!-- Breadcrumbs -->
   <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
     <ol class="breadcrumbs">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="dashboard.php">Dashboard</a></li>
       <li aria-current="page">Timetable</li>
     </ol>
   </nav>
@@ -53,8 +32,8 @@
       Faculty of Technology and Engineering (FTE) | CSPIT<br>
       Department of Computer Science & Engineering (CSE) | B.Tech Semester - 3 (Odd Term) | Division - I</p>
 
-      <div class="table-responsive" style="margin-top: 1.5rem;">
-        <table class="accessible-table">
+      <div class="table-responsive" style="margin-top: 1.5rem; overflow-x: auto;">
+        <table class="accessible-table" style="width: 100%; border-collapse: collapse;">
           <caption>CHARUSAT CSE Semester 3 Class Schedule (Monday to Friday)</caption>
           <thead>
             <tr>
@@ -145,13 +124,13 @@
       <p>Course codes, titles, structure, and designated subject instructors reference list.</p>
       
       <div class="table-responsive">
-        <table class="accessible-table">
+        <table class="accessible-table" style="width: 100%; border-collapse: collapse;">
           <caption>Course details and faculty references</caption>
           <thead>
             <tr>
               <th scope="col">Course Code</th>
               <th scope="col">Course Name</th>
-                            <th scope="col">Faculty Abbreviation</th>
+              <th scope="col">Faculty Abbr.</th>
               <th scope="col">Faculty Member Name</th>
             </tr>
           </thead>
@@ -159,7 +138,7 @@
             <tr>
               <td rowspan="4"><strong>CSUC201</strong></td>
               <td rowspan="4">FDSA (Fundamentals of Data Structure and Algorithm)</td>
-                            <td>ART</td>
+              <td>ART</td>
               <td>Dr. Amit Thakkar</td>
             </tr>
             <tr>
@@ -177,7 +156,7 @@
             <tr>
               <td rowspan="5"><strong>ITUE204</strong></td>
               <td rowspan="5">WDF (Web Development Frameworks)</td>
-                            <td>SRG</td>
+              <td>SRG</td>
               <td>Prof. Srushti Gajjar</td>
             </tr>
             <tr>
@@ -199,7 +178,7 @@
             <tr>
               <td rowspan="2"><strong>CEUE203</strong></td>
               <td rowspan="2">OOP (Object Oriented Programming)</td>
-                            <td>SSS</td>
+              <td>SSS</td>
               <td>Prof. Siddharth Shah</td>
             </tr>
             <tr>
@@ -209,7 +188,7 @@
             <tr>
               <td rowspan="2"><strong>ITUC201</strong></td>
               <td rowspan="2">FCN (Fundamentals of Computer Networks)</td>
-                            <td>HYY</td>
+              <td>HYY</td>
               <td>Prof. Harshul Yagnik</td>
             </tr>
             <tr>
@@ -219,57 +198,29 @@
             <tr>
               <td><strong>MSUD203</strong></td>
               <td>MATHS (Discrete Mathematics)</td>
-                            <td>PM</td>
+              <td>PM</td>
               <td>Prof. Pragnesh Makwana</td>
             </tr>
             <tr>
               <td><strong>HSUV201</strong></td>
               <td>HS (Creativity, Problem Solving and Innovation)</td>
-                            <td>ADK</td>
+              <td>ADK</td>
               <td>Prof. Akshita Kadam</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-        <div class="next-step-panel">
+
+    <div class="next-step-panel">
       <div class="next-step-content">
         <h3>Need Course Study Materials?</h3>
         <p>Download lecture reference notes, presentations, and lab syllabus manuals.</p>
       </div>
       <div>
-        <a href="material.html" class="btn btn-primary">Explore Study Materials</a>
+        <a href="material.php" class="btn btn-primary">Access Materials</a>
       </div>
     </div>
   </main>
 
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-info">
-        <h4>StudentHub</h4>
-        <p>Making campus services accessible, modern, and transparent for everyone.</p>
-      </div>
-      <div class="footer-links">
-        <nav class="footer-section" aria-label="Quick Links">
-          <h4>Portal Links</h4>
-          <ul>
-            <li><a href="about.html">About Portal</a></li>            <li><a href="contact.html">Support Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="footer-section" aria-label="Account Links">
-          <h4>Account</h4>
-          <ul>
-            <li><a href="login.html">Log In</a></li>
-            <li><a href="register.html">Create Account</a></li>          </ul>
-        </nav>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 StudentHub. Accessibility Compliant (WCAG 2.1 AA).</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
