@@ -2233,4 +2233,394 @@ html:not([data-theme="dark"]) .theme-toggle-round-btn .icon-moon {
   }
 }
 
+/* =====================================================================
+   ROLE SELECTION GATEWAY (STUDENT VS ADMINISTRATOR)
+   ===================================================================== */
+.role-gateway-wrapper {
+  max-width: 860px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.role-gateway-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.role-gateway-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 102, 255, 0.08);
+  color: var(--primary);
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .role-gateway-badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.role-gateway-title {
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .role-gateway-title {
+  color: #ffffff;
+}
+
+.role-gateway-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.role-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .role-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.role-gateway-card {
+  background: var(--panel-bg);
+  border: 1.5px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 2.25rem 2rem;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+}
+
+.role-gateway-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  transition: all 0.3s ease;
+}
+
+.role-gateway-card.student-card::before {
+  background: linear-gradient(135deg, #0066ff 0%, #00d2fe 100%);
+}
+
+.role-gateway-card.admin-card::before {
+  background: linear-gradient(135deg, #be185d 0%, #7c3aed 100%);
+}
+
+.role-gateway-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.role-gateway-card.student-card:hover {
+  border-color: #0066ff;
+}
+
+.role-gateway-card.admin-card:hover {
+  border-color: #be185d;
+}
+
+[data-theme="dark"] .role-gateway-card {
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .role-gateway-card.student-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 20px 48px -10px rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="dark"] .role-gateway-card.admin-card:hover {
+  border-color: #f43f5e;
+  box-shadow: 0 20px 48px -10px rgba(244, 63, 94, 0.25);
+}
+
+.role-card-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.role-card-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.role-gateway-card:hover .role-card-icon-box {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.role-card-icon-box.student-icon {
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.12), rgba(0, 210, 255, 0.18));
+  color: #0066ff;
+  border: 1px solid rgba(0, 102, 255, 0.25);
+}
+
+.role-card-icon-box.admin-icon {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.12), rgba(124, 58, 237, 0.18));
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.25);
+}
+
+[data-theme="dark"] .role-card-icon-box.student-icon {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .role-card-icon-box.admin-icon {
+  background: rgba(244, 63, 94, 0.15);
+  color: #f43f5e;
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+.role-pill-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.role-pill-badge.student-pill {
+  background: rgba(0, 102, 255, 0.08);
+  color: #0066ff;
+  border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.role-pill-badge.admin-pill {
+  background: rgba(190, 24, 93, 0.08);
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.2);
+}
+
+[data-theme="dark"] .role-pill-badge.student-pill {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .role-pill-badge.admin-pill {
+  background: rgba(244, 63, 94, 0.15);
+  color: #f43f5e;
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+.role-card-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.45rem;
+}
+
+[data-theme="dark"] .role-card-title {
+  color: #ffffff;
+}
+
+.role-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+[data-theme="dark"] .role-card-desc {
+  color: #cbd5e1;
+}
+
+.role-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.role-features-list li {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="dark"] .role-features-list li {
+  color: #e2e8f0;
+}
+
+.role-features-list li span.check-icon {
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.role-gateway-card.student-card .check-icon {
+  color: #0066ff;
+}
+
+.role-gateway-card.admin-card .check-icon {
+  color: #be185d;
+}
+
+[data-theme="dark"] .role-gateway-card.student-card .check-icon {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .role-gateway-card.admin-card .check-icon {
+  color: #f43f5e;
+}
+
+.role-action-btn {
+  width: 100%;
+  padding: 0.82rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.role-action-btn.student-btn {
+  background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 102, 255, 0.28);
+}
+
+.role-action-btn.student-btn:hover {
+  background: linear-gradient(135deg, #0052cc 0%, #0040a8 100%);
+  box-shadow: 0 8px 22px rgba(0, 102, 255, 0.4);
+}
+
+.role-action-btn.admin-btn {
+  background: linear-gradient(135deg, #be185d 0%, #9d174d 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(190, 24, 93, 0.28);
+}
+
+.role-action-btn.admin-btn:hover {
+  background: linear-gradient(135deg, #9d174d 0%, #831843 100%);
+  box-shadow: 0 8px 22px rgba(190, 24, 93, 0.4);
+}
+
+/* Header toolbar inside selected login form: Switch Role Bar */
+.role-switch-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.btn-switch-role {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-switch-role:hover {
+  background: rgba(0, 102, 255, 0.08);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .btn-switch-role:hover {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.active-role-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+.active-role-indicator.student-mode {
+  background: rgba(0, 102, 255, 0.1);
+  color: #0066ff;
+  border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.active-role-indicator.admin-mode {
+  background: rgba(190, 24, 93, 0.1);
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.2);
+}
+
+[data-theme="dark"] .active-role-indicator.student-mode {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .active-role-indicator.admin-mode {
+  background: rgba(244, 63, 94, 0.15);
+  color: #f43f5e;
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+
 

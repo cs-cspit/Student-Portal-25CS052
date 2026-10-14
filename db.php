@@ -1,43 +1,41 @@
 <?php
 /**
- * Practical 8: Secure Database Connection (db.php)
- * System: Campusly (formerly StudentHub)
+ * Practical 10: Database Connection using MySQLi (db.php)
+ * System: Campusly Academic Portal
  */
 
-$host    = '127.0.0.1';
-$port    = '3306';
-$dbname  = 'campusly';
-$user    = 'root';
-$pass    = '';
-$charset = 'utf8mb4';
+$host     = '127.0.0.1';
+$user     = 'root';
+$password = '';
+$database = 'campusly';
+$port     = 3306;
 
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+// 1. MySQLi Object-Oriented Connection (Required for Practical 10)
+$conn = new mysqli($host, $user, $password, $database, $port);
 
-try {
-    $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    // Graceful fallback to studenthub if campusly database not yet created
-    try {
-        $fallbackDsn = "mysql:host=$host;port=$port;dbname=studenthub;charset=$charset";
-        $pdo = new PDO($fallbackDsn, $user, $pass, $options);
-        $dbname = 'studenthub';
-    } catch (PDOException $e2) {
-        if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
-            echo "Database Connection Failed: " . htmlspecialchars($e2->getMessage());
-        } else {
-            die("Database Connection Failed: " . $e2->getMessage());
-        }
-    }
+if ($conn->connect_error) {
+    die("MySQLi Database Connection Failed: " . $conn->connect_error);
 }
 
+// Set charset to utf8mb4
+$conn->set_charset("utf8mb4");
+
+// 2. Backward compatibility PDO instance for shared project utilities
+try {
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4", $user, $password, [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ]);
+} catch (PDOException $e) {
+    // Graceful fallback if PDO is optional
+}
+
+// Diagnostic output if db.php is run directly
 if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
     echo "<!DOCTYPE html><html><head><title>Database Connection - Campusly</title>";
-    echo "<style>body{font-family: Arial, sans-serif; padding: 20px; background: #fff; color: #000;}</style></head><body>";
-    echo "<h3>Database Connected Successfully ($dbname)</h3>";
+    echo "<style>body{font-family: Arial, sans-serif; padding: 24px; background: #ffffff; color: #1e293b;}</style></head><body>";
+    echo "<h2 style='color: #16a34a;'>✅ MySQLi Database Connected Successfully</h2>";
+    echo "<p>Database: <strong>" . htmlspecialchars($database) . "</strong> | Host: <strong>" . htmlspecialchars($host) . "</strong></p>";
     echo "</body></html>";
 }

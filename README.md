@@ -105,8 +105,9 @@ The platform integrates secure PHP authentication, 3NF relational database archi
 ## 📑 Practical Coverage
 
 - **[Practical 8](README_PRACTICAL_8.md)**: 3NF Relational Database Schema Design & Secure PHP PDO Implementation
+- **[Practical 9](README_PRACTICAL_9.md)**: User Registration with Input Validation, Bcrypt Password Hashing, and MySQL Relational Insertion
 - **[Practical 10](README_PRACTICAL_10.md)**: Secure Login/Logout with Sessions, RBAC, 10-Minute Timeout, and Remember-Me Token
-- **Practical 11**: Student Management CRUD with Search and Filter (`students.php`)
+- **[Practical 11](README_PRACTICAL_11.md)**: Student Management CRUD with Search and Filter (`students.php`)
 
 ---
 

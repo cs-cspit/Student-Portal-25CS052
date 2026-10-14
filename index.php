@@ -43,6 +43,8 @@ require_once __DIR__ . '/includes/header.php';
             <a href="events.php" class="btn btn-secondary">Explore Events</a>
           <?php endif; ?>
         <?php else: ?>
+          <a href="login.php?role=student" class="btn btn-primary">🎓 Student Sign In</a>
+          <a href="login.php?role=admin" class="btn btn-secondary">🛡️ Administrator Sign In</a>
           <a href="about.php" class="btn btn-secondary">About Campusly</a>
         <?php endif; ?>
       </div>
