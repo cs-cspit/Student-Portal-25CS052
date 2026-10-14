@@ -8,7 +8,7 @@
  * 2. Dedicated Portal Paths: login.php?role=student vs login.php?role=admin
  * 3. Role-Based Access Control (RBAC) verification on authentication
  * 4. 1-Click Role Switching ("← Choose Different Role")
- * 5. Quick autofill credentials pills for both roles
+ * 5. Faithful Campusly Auth Card Design (Segmented Pill Tabs, Brand Emblem, Clean Alerts)
  * 6. 10-Minute session timeout and remember-me integration
  */
 
@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errorMessage = 'Please enter both your email address and password.';
         } else {
             try {
-                // Fetch user by email
-                $stmt = $pdo->prepare("SELECT user_id, name, email, password_hash, role, student_id FROM users WHERE email = :email LIMIT 1");
-                $stmt->execute([':email' => $email]);
+                // Fetch user by email OR username (name)
+                $stmt = $pdo->prepare("SELECT user_id, name, email, password_hash, role, student_id FROM users WHERE email = :email OR name = :name LIMIT 1");
+                $stmt->execute([':email' => $email, ':name' => $email]);
                 $user = $stmt->fetch();
 
                 if ($user && password_verify($password, $user['password_hash'])) {
@@ -173,7 +173,7 @@ require_once __DIR__ . '/includes/header.php';
     </ol>
   </nav>
 
-  <main id="main-content" style="padding-top: 1rem; padding-bottom: 3.5rem;">
+  <main id="main-content">
 
     <!-- ========================================================
          STEP 1: ROLE SELECTION SCREEN (Ask First at Login)
@@ -194,16 +194,35 @@ require_once __DIR__ . '/includes/header.php';
 
       <!-- Feedback Alerts for Role Selector Screen -->
       <?php if (!empty($errorMessage) && empty($portalRole)): ?>
-        <div class="alert-box alert-error" style="max-width: 680px; margin: 0 auto 2rem auto;" role="alert">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          <span><?= htmlspecialchars($errorMessage) ?></span>
+        <div class="auth-notification auth-notification-error" style="max-width: 680px; margin: 0 auto 2rem auto;" role="alert">
+          <div class="auth-notif-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="auth-notif-body">
+            <div class="auth-notif-title">Authentication Alert</div>
+            <div class="auth-notif-msg"><?= htmlspecialchars($errorMessage) ?></div>
+          </div>
+          <button type="button" class="auth-notif-close" onclick="this.closest('.auth-notification').remove()" aria-label="Dismiss Alert">&times;</button>
         </div>
       <?php endif; ?>
 
       <?php if (!empty($successMessage) && empty($portalRole)): ?>
-        <div class="alert-box alert-success" style="max-width: 680px; margin: 0 auto 2rem auto;" role="alert">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span><?= htmlspecialchars($successMessage) ?></span>
+        <div class="auth-notification auth-notification-success" style="max-width: 680px; margin: 0 auto 2rem auto;" role="status">
+          <div class="auth-notif-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="auth-notif-body">
+            <div class="auth-notif-title">Success</div>
+            <div class="auth-notif-msg"><?= htmlspecialchars($successMessage) ?></div>
+          </div>
+          <button type="button" class="auth-notif-close" onclick="this.closest('.auth-notification').remove()" aria-label="Dismiss Alert">&times;</button>
         </div>
       <?php endif; ?>
 
@@ -286,9 +305,43 @@ require_once __DIR__ . '/includes/header.php';
          ======================================================== -->
     <div 
       id="auth-card-container" 
-      class="auth-container" 
+      class="auth-card-container" 
       style="display: <?= !empty($portalRole) ? 'block' : 'none' ?>;"
     >
+      <!-- Feedback Alert Messages -->
+      <?php if (!empty($errorMessage) && !empty($portalRole)): ?>
+        <div class="auth-notification auth-notification-error" role="alert">
+          <div class="auth-notif-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="auth-notif-body">
+            <div class="auth-notif-title">Authentication Alert</div>
+            <div class="auth-notif-msg"><?= htmlspecialchars($errorMessage) ?></div>
+          </div>
+          <button type="button" class="auth-notif-close" onclick="this.closest('.auth-notification').remove()" aria-label="Dismiss Alert">&times;</button>
+        </div>
+      <?php endif; ?>
+
+      <?php if (!empty($successMessage) && !empty($portalRole)): ?>
+        <div class="auth-notification auth-notification-success" role="status">
+          <div class="auth-notif-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="auth-notif-body">
+            <div class="auth-notif-title">Success</div>
+            <div class="auth-notif-msg"><?= htmlspecialchars($successMessage) ?></div>
+          </div>
+          <button type="button" class="auth-notif-close" onclick="this.closest('.auth-notification').remove()" aria-label="Dismiss Alert">&times;</button>
+        </div>
+      <?php endif; ?>
+
       <div class="auth-card">
 
         <!-- Role Switching Toolbar -->
@@ -304,70 +357,59 @@ require_once __DIR__ . '/includes/header.php';
           </div>
         </div>
 
-        <div class="auth-header">
-          <h1 id="auth-main-title" class="auth-title">
-            <?= $portalRole === 'admin' ? 'Administrator Sign In' : 'Student Portal Sign In' ?>
-          </h1>
-          <p id="auth-main-desc" class="auth-subtitle">
-            <?= $portalRole === 'admin' ? 'Executive authentication with institutional credentials' : 'Enter your university credentials to access your dashboard' ?>
+        <!-- Header with Brand Logo Emblem -->
+        <div class="auth-card-header">
+          <div class="auth-card-badge">
+            <img src="images/campusly-logo.png" alt="Campusly Logo" class="auth-card-logo">
+          </div>
+          <h2 class="auth-card-title">Welcome to <span class="brand-text"><span class="brand-campus">Campus</span><span class="brand-ly">ly</span></span></h2>
+          <p class="auth-card-subtitle" id="auth-main-desc">
+            <?= $portalRole === 'admin' ? 'Executive Administrative Portal for CHARUSAT Family' : 'Secure Academic Gateway for CHARUSAT Family' ?>
           </p>
         </div>
 
-        <!-- Navigation Tabs (Only visible for Student mode, hidden for Admin) -->
-        <div class="auth-tabs" id="auth-tab-bar" style="display: <?= $portalRole === 'admin' ? 'none' : 'grid' ?>;">
-          <button type="button" class="tab-btn active" id="tab-login" onclick="switchTab('login')">
-            <span>Sign In</span>
+        <!-- Segmented Pill Tabs (Visible for Student mode, hidden for Admin) -->
+        <div class="auth-tab-pills" id="auth-tab-pills" role="tablist" style="display: <?= $portalRole === 'admin' ? 'none' : 'flex' ?>;">
+          <button type="button" id="tab-login" class="auth-tab-pill active" onclick="switchTab('login')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            Sign In
           </button>
-          <button type="button" class="tab-btn" id="tab-register" onclick="switchTab('register')">
-            <span>Create Student Account</span>
+          <button type="button" id="tab-register" class="auth-tab-pill" onclick="switchTab('register')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7.5" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+            Create Account
           </button>
         </div>
 
-        <!-- Feedback Alert Messages -->
-        <?php if (!empty($errorMessage) && !empty($portalRole)): ?>
-          <div class="alert-box alert-error" role="alert">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            <span><?= htmlspecialchars($errorMessage) ?></span>
-          </div>
-        <?php endif; ?>
-
-        <?php if (!empty($successMessage) && !empty($portalRole)): ?>
-          <div class="alert-box alert-success" role="alert">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span><?= htmlspecialchars($successMessage) ?></span>
-          </div>
-        <?php endif; ?>
-
         <!-- LOGIN PANE -->
-        <div id="login-pane" class="tab-pane">
+        <div id="login-pane" class="tab-pane active-pane">
           <form id="login-form" action="login.php" method="POST">
             <input type="hidden" name="action" value="login">
             <input type="hidden" name="portal_role" id="portal_role_input" value="<?= htmlspecialchars($portalRole) ?>">
 
             <div class="form-group">
               <label for="email" id="email-label">
-                <?= $portalRole === 'admin' ? 'Administrative Email Address' : 'Student University Email' ?>
+                <?= $portalRole === 'admin' ? 'Administrative Email Address' : 'University Email Address or Username' ?>
               </label>
               <div class="input-icon-group">
                 <span class="input-icon-prefix">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </span>
                 <input 
-                  type="email" 
+                  type="text" 
                   id="email" 
                   name="email" 
                   class="input-with-icon" 
-                  placeholder="<?= $portalRole === 'admin' ? 'admin@campusly.com' : 'jay@campusly.com' ?>" 
+                  value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                  placeholder="<?= $portalRole === 'admin' ? 'admin@campusly.com' : 'e.g. Jay, jayyyy, or admin@campusly.com' ?>" 
                   required 
-                  autocomplete="email"
+                  autocomplete="username"
                 >
               </div>
             </div>
 
             <div class="form-group">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                <label for="password" style="margin-bottom: 0;">Password</label>
-                <a href="contact.php" style="font-size: 0.82rem; color: var(--primary); text-decoration: none;">Forgot Password?</a>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <label for="password" style="margin-bottom: 0;">Account Password</label>
               </div>
               <div class="input-icon-group">
                 <span class="input-icon-prefix">
@@ -378,7 +420,7 @@ require_once __DIR__ . '/includes/header.php';
                   id="password" 
                   name="password" 
                   class="input-with-icon" 
-                  placeholder="Enter your account password" 
+                  placeholder="••••••••••••" 
                   required 
                   autocomplete="current-password"
                 >
@@ -388,34 +430,34 @@ require_once __DIR__ . '/includes/header.php';
               </div>
             </div>
 
-            <div class="form-options">
-              <label class="checkbox-label" for="remember_me">
+            <div style="display: flex; align-items: center; margin: 1.25rem 0 1.75rem; font-size: 0.9rem;">
+              <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; cursor: pointer; margin-bottom: 0;">
                 <input type="checkbox" id="remember_me" name="remember_me" value="1" style="width: 16px; height: 16px; accent-color: var(--primary);">
                 <span>Remember me (14-Day Session)</span>
               </label>
             </div>
 
-            <button type="submit" id="btn-submit-auth" class="btn-auth-submit">
-              <span id="btn-submit-text"><?= $portalRole === 'admin' ? 'Sign In as Administrator' : 'Sign In to Student Portal' ?></span>
+            <button type="submit" class="btn-auth-submit">
+              <span id="btn-submit-text"><?= $portalRole === 'admin' ? 'Sign In as Administrator' : 'Sign In to Campusly' ?></span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
 
             <!-- 1-Click Demo Accounts -->
             <div class="demo-creds-container">
               <div class="demo-creds-header">
-                <span class="demo-creds-title">⚡ Quick Autofill Test Account:</span>
+                <span class="demo-creds-title">⚡ Quick Autofill Test Accounts:</span>
               </div>
-              <div class="demo-pills" id="demo-pills-box">
+              <div class="demo-pills" id="demo-pills-container">
                 <?php if ($portalRole === 'admin'): ?>
                   <button type="button" class="demo-pill-btn" onclick="fillCreds('admin@campusly.com', 'Admin@123')">
-                    <span>🛡️ Fill Admin Credentials (admin@campusly.com)</span>
+                    <span>🛡️ Admin: admin@campusly.com</span>
                   </button>
                 <?php else: ?>
                   <button type="button" class="demo-pill-btn" onclick="fillCreds('jay@campusly.com', 'Student@123')">
-                    <span>👨‍🎓 Fill Student: Jay (jay@campusly.com)</span>
+                    <span>👨‍🎓 Student: Jay</span>
                   </button>
                   <button type="button" class="demo-pill-btn" onclick="fillCreds('jayyyy@campusly.com', 'Student@123')">
-                    <span>👨‍🎓 Student: Jayyyy</span>
+                    <span>👨‍🎓 Student: jayyyy</span>
                   </button>
                 <?php endif; ?>
               </div>
@@ -482,7 +524,7 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <button type="submit" class="btn-auth-submit" style="margin-top: 1rem;">
-              <span>Complete Student Registration</span>
+              <span>Complete Registration</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </form>
@@ -506,13 +548,12 @@ require_once __DIR__ . '/includes/header.php';
       const indicator = document.getElementById('active-role-indicator');
       const icon = document.getElementById('active-role-icon');
       const text = document.getElementById('active-role-text');
-      const title = document.getElementById('auth-main-title');
       const desc = document.getElementById('auth-main-desc');
       const emailLabel = document.getElementById('email-label');
       const emailInput = document.getElementById('email');
       const submitText = document.getElementById('btn-submit-text');
-      const tabBar = document.getElementById('auth-tab-bar');
-      const demoBox = document.getElementById('demo-pills-box');
+      const tabPills = document.getElementById('auth-tab-pills');
+      const demoBox = document.getElementById('demo-pills-container');
 
       // Update role hidden input
       if (roleInput) roleInput.value = role;
@@ -521,38 +562,41 @@ require_once __DIR__ . '/includes/header.php';
         indicator.className = 'active-role-indicator admin-mode';
         icon.textContent = '🛡️';
         text.textContent = 'Administrator Gateway';
-        title.textContent = 'Administrator Sign In';
-        desc.textContent = 'Executive authentication with institutional credentials';
+        desc.textContent = 'Executive Administrative Portal for CHARUSAT Family';
         emailLabel.textContent = 'Administrative Email Address';
         emailInput.placeholder = 'admin@campusly.com';
         submitText.textContent = 'Sign In as Administrator';
-        tabBar.style.display = 'none';
+        if (tabPills) tabPills.style.display = 'none';
         switchTab('login');
 
-        demoBox.innerHTML = `
-          <button type="button" class="demo-pill-btn" onclick="fillCreds('admin@campusly.com', 'Admin@123')">
-            <span>🛡️ Fill Admin Credentials (admin@campusly.com)</span>
-          </button>
-        `;
+        if (demoBox) {
+          demoBox.innerHTML = `
+            <button type="button" class="demo-pill-btn" onclick="fillCreds('admin@campusly.com', 'Admin@123')">
+              <span>🛡️ Admin: admin@campusly.com</span>
+            </button>
+          `;
+        }
       } else {
         indicator.className = 'active-role-indicator student-mode';
         icon.textContent = '🎓';
         text.textContent = 'Student Gateway';
-        title.textContent = 'Student Portal Sign In';
-        desc.textContent = 'Enter your university credentials to access your dashboard';
-        emailLabel.textContent = 'Student University Email';
-        emailInput.placeholder = 'jay@campusly.com';
-        submitText.textContent = 'Sign In to Student Portal';
-        tabBar.style.display = 'grid';
+        desc.textContent = 'Secure Academic Gateway for CHARUSAT Family';
+        emailLabel.textContent = 'University Email Address or Username';
+        emailInput.placeholder = 'e.g. Jay, jayyyy, or admin@campusly.com';
+        submitText.textContent = 'Sign In to Campusly';
+        if (tabPills) tabPills.style.display = 'flex';
+        switchTab('login');
 
-        demoBox.innerHTML = `
-          <button type="button" class="demo-pill-btn" onclick="fillCreds('jay@campusly.com', 'Student@123')">
-            <span>👨‍🎓 Fill Student: Jay (jay@campusly.com)</span>
-          </button>
-          <button type="button" class="demo-pill-btn" onclick="fillCreds('jayyyy@campusly.com', 'Student@123')">
-            <span>👨‍🎓 Student: Jayyyy</span>
-          </button>
-        `;
+        if (demoBox) {
+          demoBox.innerHTML = `
+            <button type="button" class="demo-pill-btn" onclick="fillCreds('jay@campusly.com', 'Student@123')">
+              <span>👨‍🎓 Student: Jay</span>
+            </button>
+            <button type="button" class="demo-pill-btn" onclick="fillCreds('jayyyy@campusly.com', 'Student@123')">
+              <span>👨‍🎓 Student: jayyyy</span>
+            </button>
+          `;
+        }
       }
 
       // Update browser URL without reload
@@ -612,13 +656,25 @@ require_once __DIR__ . '/includes/header.php';
       const tabReg = document.getElementById('tab-register');
 
       if (tab === 'login') {
-        if (loginPane) loginPane.style.display = 'block';
-        if (regPane) regPane.style.display = 'none';
+        if (loginPane) {
+          loginPane.style.display = 'block';
+          loginPane.classList.add('active-pane');
+        }
+        if (regPane) {
+          regPane.style.display = 'none';
+          regPane.classList.remove('active-pane');
+        }
         if (tabLogin) tabLogin.classList.add('active');
         if (tabReg) tabReg.classList.remove('active');
       } else {
-        if (loginPane) loginPane.style.display = 'none';
-        if (regPane) regPane.style.display = 'block';
+        if (loginPane) {
+          loginPane.style.display = 'none';
+          loginPane.classList.remove('active-pane');
+        }
+        if (regPane) {
+          regPane.style.display = 'block';
+          regPane.classList.add('active-pane');
+        }
         if (tabLogin) tabLogin.classList.remove('active');
         if (tabReg) tabReg.classList.add('active');
       }

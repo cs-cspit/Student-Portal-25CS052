@@ -134,8 +134,9 @@ $sql = "SELECT student_id, name, email, course FROM students WHERE 1=1";
 $params = [];
 
 if ($searchQuery !== '') {
-    $sql .= " AND (name LIKE :search OR email LIKE :search)";
-    $params[':search'] = "%$searchQuery%";
+    $sql .= " AND (name LIKE :search_name OR email LIKE :search_email)";
+    $params[':search_name'] = "%$searchQuery%";
+    $params[':search_email'] = "%$searchQuery%";
 }
 
 if ($courseFilter !== '' && $courseFilter !== 'ALL') {
