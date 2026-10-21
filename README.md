@@ -87,10 +87,10 @@ Yes. The Git repository is cleanly maintained with `.gitignore` filtering out te
 ├── auth.php                       # Authentication Guard, RBAC Engine & Audit Logger
 ├── db.php                         # Resilient MySQLi & PDO Connection Handler
 │
-├── dashboard.php                  # Executive Admin Control Center (Practical 14)
-├── admin_dashboard.php            # Admin Dashboard Router & Protection Wrapper
-├── student_dashboard.php          # Personalized Student Portal & Timetable
-├── students.php                   # Student Directory with Live AJAX CRUD (Practical 13)
+├── dashboard.php                  # Executive Admin Control Center & Analytics
+├── admin_dashboard.php            # Admin Dashboard Router & RBAC Protection Wrapper
+├── student_dashboard.php          # Personalized Student Portal & Enrolled Modules
+├── students.php                   # Student Directory with Real-time AJAX CRUD & Filtering
 ├── api.php                        # RESTful JSON API Endpoints for CRUD Operations
 ├── events.php                     # Campus Events Catalog & Junction Registrations
 ├── timetable.php                  # Weekly Academic Class Schedule
@@ -210,19 +210,6 @@ For production deployment to cloud infrastructure:
    Navigate to `students.php`. Add a student via modal, search dynamically with instant keystroke debounce, and export CSV.
 6. **Test 10-Minute Session Timeout**:
    Observe session countdown timer in the top-right header. Warning modal triggers at 1 minute remaining.
-
----
-
-## 📑 Semester Practical Progression
-
-- **[Practical 8](README_PRACTICAL_8.md)**: 3NF Relational Database Schema Design & Secure PHP PDO Connection
-- **[Practical 9](README_PRACTICAL_9.md)**: User Registration with Input Validation, Bcrypt Password Hashing, and MySQL Relational Insertion
-- **[Practical 10](README_PRACTICAL_10.md)**: Secure Login/Logout with Sessions, RBAC, 10-Minute Timeout, and Remember-Me Token
-- **[Practical 11](README_PRACTICAL_11.md)**: Student Management CRUD with Search, Filter & CSV Export (`students.php`)
-- **[Practical 12](README_PRACTICAL_12.md)**: Event Management CRUD with File Upload and Poster Validation (`events.php`)
-- **[Practical 13](README_PRACTICAL_13.md)**: RESTful PHP JSON API and Asynchronous AJAX/Fetch CRUD without Page Reload (`api.php`)
-- **[Practical 14](README_PRACTICAL_14.md)**: Dynamic Admin Dashboard, RBAC Menus, Analytics Chart, and Relational Audit Logging
-- **Practical 15**: Final Integration, Testing, Documentation, GitHub Submission, and Local Deployment (`studenthub.sql`)
 
 ---
 
