@@ -347,8 +347,7 @@ async function buildPdfReport(browser) {
     <div class="inst-header">
       <div class="inst-title">Chandubhai S. Patel Institute of Technology (CSPIT)</div>
       <div class="inst-sub">Department of Computer Science & Engineering &bull; CHARUSAT</div>
-      <div class="report-title">StudentHub (Campusly) &mdash; Final Project Features & Requirements Satisfaction Report</div>
-      <div class="report-subtitle">Practical 15: Full Integration, Testing, Documentation, Local Deployment & Submission Proof</div>
+      <div class="report-title">Campusly (StudentHub) &mdash; Final Project Overview</div>
     </div>
 
     <!-- METADATA BOX -->
@@ -657,7 +656,7 @@ async function buildPdfReport(browser) {
     headerTemplate: '<div></div>',
     footerTemplate: `
       <div style="font-family: -apple-system, sans-serif; font-size: 8pt; color: #64748b; width: 100%; padding: 0 14mm; display: flex; justify-content: space-between; align-items: center;">
-        <span>CSPIT &bull; CHARUSAT &bull; StudentHub (Campusly) Practical 15</span>
+        <span>CSPIT &bull; CHARUSAT &bull; Campusly (StudentHub) &bull; Final Project Overview</span>
         <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
       </div>
     `,
@@ -686,7 +685,7 @@ async function main() {
   const page = await browser.newPage();
   await page.setViewport({ width: 1600, height: 1100, deviceScaleFactor: 2 });
 
-  await captureExtraScreenshots(page);
+  // Screenshots already captured in PRAC SS/Practical 15
   await buildPdfReport(browser);
 
   await browser.close();

@@ -1,5 +1,4 @@
-# StudentHub (Campusly) &mdash; Academic Management Portal
-### Practical 15: Final Integration, Testing, Documentation, GitHub Submission, and Local Deployment
+# Campusly (StudentHub) &mdash; Final Project Overview
 
 <p align="center">
   <img src="images/campusly-logo.png" width="96" height="96" alt="Campusly Logo" style="border-radius: 18px; box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);">
