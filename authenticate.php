@@ -69,9 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $upd->close();
             }
 
+            // Practical 14: Log successful authentication in audit_logs
+            $audit_stmt = $conn->prepare("INSERT INTO audit_logs (user_id, user_email, user_role, action, details, ip_address, created_at) VALUES (?, ?, ?, 'LOGIN_SUCCESS', 'User authenticated via password_verify() gateway', ?, NOW())");
+            if ($audit_stmt) {
+                $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+                $audit_stmt->bind_param("isss", $user['user_id'], $user['email'], $user['role'], $ip);
+                $audit_stmt->execute();
+                $audit_stmt->close();
+            }
+
             // Role-Based Access Redirection (RBAC)
             if ($user['role'] === 'admin') {
-                header("Location: admin_dashboard.php");
+                header("Location: dashboard.php");
             } else {
                 header("Location: student_dashboard.php");
             }

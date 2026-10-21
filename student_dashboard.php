@@ -110,32 +110,14 @@ if ($st_stmt) {
     $student_details = $st_stmt->get_result()->fetch_assoc();
     $st_stmt->close();
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard - Campusly</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <!-- Top Navigation Bar -->
-  <header class="navbar">
-    <a href="student_dashboard.php" class="navbar-brand">
-      <div class="logo-icon">C</div>
-      <span>Campusly Portal &bull; Student</span>
-    </a>
-    <ul class="navbar-nav">
-      <li><a href="dashboard.php" class="nav-link">Main Dashboard</a></li>
-      <li><a href="student_dashboard.php" class="nav-link active">Student Portal</a></li>
-      <li><a href="logout.php" class="btn btn-danger" style="padding: 0.35rem 0.85rem; font-size: 0.85rem;">Sign Out</a></li>
-    </ul>
-  </header>
+$pageTitle = "Student Dashboard - Campusly";
+$activePage = "student_dashboard.php";
+require_once __DIR__ . '/includes/header.php';
+?>
 
   <!-- Student Content Container -->
-  <main class="container">
+  <main class="container" style="max-width: 1100px; margin: 2rem auto;">
 
     <!-- Inactivity Timeout Monitor Bar -->
     <div class="session-bar">
@@ -238,23 +220,4 @@ if ($st_stmt) {
 
   </main>
 
-  <footer class="footer">
-    Campusly Academic Portal &bull; Practical 10 Role-Based Access Control (RBAC) &bull; CHARUSAT
-  </footer>
-
-  <script>
-    let timeLeft = 600;
-    const timerElem = document.getElementById('countdownTimer');
-    setInterval(() => {
-      if (timeLeft <= 0) {
-        window.location.href = 'timeout.php?action=simulate_timeout';
-        return;
-      }
-      timeLeft--;
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerElem.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }, 1000);
-  </script>
-</body>
-</html>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

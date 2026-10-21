@@ -10,8 +10,15 @@ $password = '';
 $database = 'campusly';
 $port     = 3306;
 
-// 1. MySQLi Object-Oriented Connection (Required for Practical 10)
-$conn = new mysqli($host, $user, $password, $database, $port);
+// 1. MySQLi Object-Oriented Connection (Supporting studenthub and campusly)
+$database = 'studenthub';
+$conn = @new mysqli($host, $user, $password, $database, $port);
+
+if ($conn->connect_error) {
+    // Fallback to campusly if studenthub is not present
+    $database = 'campusly';
+    $conn = new mysqli($host, $user, $password, $database, $port);
+}
 
 if ($conn->connect_error) {
     die("MySQLi Database Connection Failed: " . $conn->connect_error);

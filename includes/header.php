@@ -248,21 +248,21 @@ $activePage = $activePage ?? basename($_SERVER['PHP_SELF']);
           <li><a href="index.php" class="<?= $activePage === 'index.php' ? 'active-page' : '' ?>">Home</a></li>
           <?php if ($isLoggedIn): ?>
             <?php if ($userRole === 'admin'): ?>
-              <!-- Admin Portal Navigation (No Material, No Timetable, No Student Dashboard) -->
-              <li><a href="admin_dashboard.php" class="admin-nav-link <?= $activePage === 'admin_dashboard.php' ? 'active-page' : '' ?>">Admin Control Center</a></li>
+              <!-- Admin Dynamic Role Navigation (Practical 14 RBAC) -->
+              <li><a href="dashboard.php" class="admin-nav-link <?= in_array($activePage, ['dashboard.php', 'admin_dashboard.php']) ? 'active-page' : '' ?>">Admin Dashboard</a></li>
+              <li><a href="students.php" class="<?= $activePage === 'students.php' ? 'active-page' : '' ?>">Students (CRUD)</a></li>
               <li><a href="events.php" class="<?= $activePage === 'events.php' ? 'active-page' : '' ?>">Campus Events</a></li>
+              <li><a href="dashboard.php#audit-logs" class="<?= $activePage === 'audit_logs' ? 'active-page' : '' ?>">Audit Logs</a></li>
               <li><a href="about.php" class="<?= $activePage === 'about.php' ? 'active-page' : '' ?>">About</a></li>
-              <li><a href="contact.php" class="<?= $activePage === 'contact.php' ? 'active-page' : '' ?>">Contact</a></li>
               <li class="nav-logout-item"><a href="logout.php" class="nav-logout-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg><span>Log Out</span></a></li>
             <?php else: ?>
-              <!-- Student Navigation -->
-              <li><a href="dashboard.php" class="<?= $activePage === 'dashboard.php' ? 'active-page' : '' ?>">Dashboard</a></li>
+              <!-- Student Dynamic Role Navigation (Practical 14 RBAC) -->
+              <li><a href="student_dashboard.php" class="<?= in_array($activePage, ['student_dashboard.php', 'dashboard.php']) ? 'active-page' : '' ?>">Student Dashboard</a></li>
               <li><a href="timetable.php" class="<?= $activePage === 'timetable.php' ? 'active-page' : '' ?>">Timetable</a></li>
               <li><a href="material.php" class="<?= $activePage === 'material.php' ? 'active-page' : '' ?>">Material</a></li>
               <li><a href="events.php" class="<?= $activePage === 'events.php' ? 'active-page' : '' ?>">Events</a></li>
               <li><a href="profile.php" class="<?= $activePage === 'profile.php' ? 'active-page' : '' ?>">Profile</a></li>
               <li><a href="about.php" class="<?= $activePage === 'about.php' ? 'active-page' : '' ?>">About</a></li>
-              <li><a href="contact.php" class="<?= $activePage === 'contact.php' ? 'active-page' : '' ?>">Contact</a></li>
               <li class="nav-logout-item"><a href="logout.php" class="nav-logout-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg><span>Log Out</span></a></li>
             <?php endif; ?>
           <?php else: ?>

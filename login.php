@@ -20,9 +20,9 @@ require_once __DIR__ . '/auth.php';
 // If user is already authenticated, redirect to their role dashboard
 if (is_logged_in()) {
     if (($_SESSION['role'] ?? '') === 'admin') {
-        header('Location: admin_dashboard.php');
-    } else {
         header('Location: dashboard.php');
+    } else {
+        header('Location: student_dashboard.php');
     }
     exit;
 }
@@ -79,10 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         // Route to appropriate dashboard
                         if ($user['role'] === 'admin') {
-                            header('Location: admin_dashboard.php');
+                            header('Location: dashboard.php');
                         } else {
                             // Check if an intended destination was recorded
-                            $dest = $_SESSION['intended_destination'] ?? 'dashboard.php';
+                            $dest = $_SESSION['intended_destination'] ?? 'student_dashboard.php';
                             unset($_SESSION['intended_destination']);
                             header("Location: $dest");
                         }

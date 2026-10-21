@@ -19,6 +19,123 @@ require_once __DIR__ . '/db.php';
 define('SESSION_TIMEOUT_SECONDS', 600);
 
 /**
+ * Practical 14: Audit Logging Helper
+ * Records administrative actions and security events into MySQL audit_logs
+ */
+function log_audit($action, $details = '', $userId = null, $userEmail = null, $userRole = null) {
+    global $pdo, $conn;
+
+    if ($userId === null && isset($_SESSION['user_id'])) {
+        $userId = $_SESSION['user_id'];
+    }
+    if ($userEmail === null) {
+        $userEmail = $_SESSION['user_email'] ?? $_SESSION['email'] ?? 'guest@campusly.com';
+    }
+    if ($userRole === null) {
+        $userRole = $_SESSION['role'] ?? 'guest';
+    }
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+
+    if (isset($pdo) && $pdo !== null) {
+        try {
+            $stmt = $pdo->prepare("INSERT INTO audit_logs (user_id, user_email, user_role, action, details, ip_address, created_at) VALUES (:uid, :email, :role, :action, :details, :ip, NOW())");
+            $stmt->execute([
+                ':uid'     => $userId,
+                ':email'   => $userEmail,
+                ':role'    => $userRole,
+                ':action'  => $action,
+                ':details' => $details,
+                ':ip'      => $ip
+            ]);
+            return;
+        } catch (Exception $e) {
+            // continue fallback
+        }
+    }
+
+    if (isset($conn) && $conn !== null) {
+        try {
+            $stmt = $conn->prepare("INSERT INTO audit_logs (user_id, user_email, user_role, action, details, ip_address, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
+            if ($stmt) {
+                $stmt->bind_param("isssss", $userId, $userEmail, $userRole, $action, $details, $ip);
+                $stmt->execute();
+                $stmt->close();
+            }
+        } catch (Exception $e) {
+            // ignore
+        }
+    }
+}
+
+/**
+ * Render standard 403 Forbidden Access Restricted Page
+ */
+function render_403_page($message = 'Administrator privileges required. Non-admin users are strictly restricted from accessing this area.') {
+    http_response_code(403);
+    $userName  = $_SESSION['name'] ?? $_SESSION['user_name'] ?? 'User';
+    $userEmail = $_SESSION['email'] ?? $_SESSION['user_email'] ?? '';
+    $userRole  = $_SESSION['role'] ?? 'guest';
+
+    // Log the security event
+    log_audit('UNAUTHORIZED_ACCESS_403', 'Forbidden access attempt to ' . ($_SERVER['REQUEST_URI'] ?? 'admin area') . ' by role: ' . $userRole . ' (' . $userEmail . ')');
+
+    $pageTitle = "403 Forbidden - Non-Admin Access Restricted";
+    require_once __DIR__ . '/includes/header.php';
+    ?>
+    <main id="main-content" style="max-width: 820px; margin: 3rem auto; padding: 0 1.5rem;">
+      <div style="background: #ffffff; border: 1px solid #fecaca; border-top: 5px solid #dc2626; border-radius: 14px; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.08); padding: 2.5rem; text-align: center;">
+        <div style="width: 72px; height: 72px; margin: 0 auto 1.25rem; border-radius: 50%; background: #fee2e2; color: #dc2626; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border: 2px solid #fca5a5;">
+          🚫
+        </div>
+        <span style="display: inline-block; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; padding: 3px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 0.75rem;">
+          HTTP 403 Forbidden &bull; RBAC Guard Active
+        </span>
+        <h1 style="color: #1e293b; font-size: 1.85rem; font-weight: 800; margin-bottom: 0.75rem;">
+          Non-Admin Access Restricted
+        </h1>
+        <p style="color: #64748b; font-size: 1.05rem; max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
+          <?= htmlspecialchars($message) ?>
+        </p>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; text-align: left; max-width: 620px; margin: 0 auto 1.75rem; font-size: 0.9rem;">
+          <div style="display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f1f5f9;">
+            <span style="color: #64748b;">Current Authenticated Account:</span>
+            <strong><?= htmlspecialchars($userName) ?> (<code><?= htmlspecialchars($userEmail) ?></code>)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f1f5f9;">
+            <span style="color: #64748b;">Assigned Role:</span>
+            <span style="background: #eff6ff; color: #2563eb; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1px solid #bfdbfe; font-size: 0.8rem; text-transform: uppercase;">
+              <?= htmlspecialchars($userRole) ?>
+            </span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f1f5f9;">
+            <span style="color: #64748b;">Required Authorization:</span>
+            <span style="background: #fdf2f8; color: #be185d; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1px solid #fbcfe8; font-size: 0.8rem; text-transform: uppercase;">
+              ADMINISTRATOR
+            </span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 0.4rem 0;">
+            <span style="color: #64748b;">Audit Logging Status:</span>
+            <span style="color: #16a34a; font-weight: 600;">✓ Event Recorded in `audit_logs`</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+          <a href="student_dashboard.php" class="btn btn-primary" style="padding: 0.65rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem; text-decoration: none;">
+            🎓 Go to Student Dashboard
+          </a>
+          <a href="login.php?role=admin" class="btn btn-secondary" style="padding: 0.65rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem; text-decoration: none;">
+            🔐 Sign In as Administrator
+          </a>
+        </div>
+      </div>
+    </main>
+    <?php
+    require_once __DIR__ . '/includes/footer.php';
+    exit;
+}
+
+/**
  * Initialize secure session with hardened cookie flags
  */
 function init_secure_session() {
@@ -131,7 +248,10 @@ function require_login($allowed_roles = []) {
     if (!empty($allowed_roles)) {
         $userRole = $_SESSION['role'] ?? '';
         if (!in_array($userRole, (array)$allowed_roles)) {
-            // Role not authorized
+            // Role not authorized: Enforce RBAC with HTTP 403 response
+            if (in_array('admin', (array)$allowed_roles) && $userRole !== 'admin') {
+                render_403_page('Administrator privileges required. Non-admin accounts (' . htmlspecialchars($_SESSION['email'] ?? $_SESSION['user_email'] ?? 'student') . ') are strictly restricted from accessing the Admin Control Center.');
+            }
             if ($userRole === 'student') {
                 header('Location: dashboard.php?msg=forbidden');
             } else {
@@ -157,6 +277,9 @@ function login_user($user, $remember = false) {
     $_SESSION['role']          = $user['role'];
     $_SESSION['student_id']    = $user['student_id'];
     $_SESSION['last_activity'] = time();
+
+    // Practical 14: Log successful login action in audit_logs
+    log_audit('LOGIN_SUCCESS', ucfirst($user['role']) . ' user ' . $user['email'] . ' authenticated successfully', $user['user_id'], $user['email'], $user['role']);
 
     // Intermediate Extension: Record last login timestamp
     $upd = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE user_id = :uid");
