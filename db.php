@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Database Connection using MySQLi (db.php)
+ * Campusly Database Connection Handler (db.php)
  * System: Campusly Academic Portal
  */
 

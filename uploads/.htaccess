@@ -1,4 +1,4 @@
-# Practical 12: Upload Directory Protection (Advanced Extension)
+# Upload Directory Protection Guard
 # Disable PHP script execution inside uploads directory
 <IfModule mod_php.c>
     php_flag engine off

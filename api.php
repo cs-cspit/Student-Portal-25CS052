@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 13: PHP JSON API (api.php)
+ * Campusly RESTful JSON API (api.php)
  * System: Campusly (CHARUSAT CSPIT Academic Portal)
  * 
  * Features:

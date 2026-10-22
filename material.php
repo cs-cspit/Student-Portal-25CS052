@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
             <li><a href="#" style="color: var(--primary); text-decoration: none;">📄 Course Syllabus (PDF, 220KB)</a></li>
             <li><a href="#" style="color: var(--primary); text-decoration: none;">📄 Unit 1: Introduction to Framework Architectures (PDF, 1.4MB)</a></li>
-            <li><a href="#" style="color: var(--primary); text-decoration: none;">📄 Practical Lab Manual: Setup Guidelines (PDF, 850KB)</a></li>
+            <li><a href="#" style="color: var(--primary); text-decoration: none;">📄 Academic Lab Manual: Setup Guidelines (PDF, 850KB)</a></li>
           </ul>
         </article>
 

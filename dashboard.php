@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 14: Admin Dashboard with RBAC, Dynamic Menu, and Audit Log
+ * Campusly Admin Dashboard with RBAC, Dynamic Menu, and Audit Log
  * System: Campusly Academic Management System
  * 
  * Features:

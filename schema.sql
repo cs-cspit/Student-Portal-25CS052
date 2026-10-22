@@ -1,5 +1,5 @@
 -- =====================================================================
--- Practical 14: Campusly Academic Management System Schema
+-- Campusly Academic Management System Schema
 -- Features: RBAC, Dynamic Dashboard Queries, Registrations, Audit Logging
 -- Database Name: campusly
 -- Tables: students, events, registrations, users, audit_logs

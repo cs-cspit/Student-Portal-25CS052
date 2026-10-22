@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Secure Logout Script (logout.php)
+ * Campusly Secure Logout Script (logout.php)
  * System: Campusly
  * 
  * Safely clears session variables, wipes session cookie,

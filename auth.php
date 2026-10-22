@@ -1,7 +1,7 @@
 <?php
 /**
- * Practical 10: Secure Authentication & Session Management Module
- * System: Campusly (formerly StudentHub)
+ * Campusly Secure Authentication & Session Management Module
+ * System: Campusly (StudentHub)
  * 
  * Features:
  * 1. Hardened Session Configuration (HttpOnly, SameSite, Secure, Strict Mode)
@@ -19,7 +19,7 @@ require_once __DIR__ . '/db.php';
 define('SESSION_TIMEOUT_SECONDS', 600);
 
 /**
- * Practical 14: Audit Logging Helper
+ * Audit Logging Helper
  * Records administrative actions and security events into MySQL audit_logs
  */
 function log_audit($action, $details = '', $userId = null, $userEmail = null, $userRole = null) {
@@ -278,7 +278,7 @@ function login_user($user, $remember = false) {
     $_SESSION['student_id']    = $user['student_id'];
     $_SESSION['last_activity'] = time();
 
-    // Practical 14: Log successful login action in audit_logs
+    // Log successful login action in audit_logs
     log_audit('LOGIN_SUCCESS', ucfirst($user['role']) . ' user ' . $user['email'] . ' authenticated successfully', $user['user_id'], $user['email'], $user['role']);
 
     // Intermediate Extension: Record last login timestamp

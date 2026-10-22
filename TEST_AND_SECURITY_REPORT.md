@@ -1,18 +1,17 @@
-# StudentHub Portal &mdash; Final Integration, Testing, Security & Accessibility Report
-**Course:** ITUE203 - Web Development Frameworks / Database Systems  
-**Practical 15:** Final Integration, Testing, Documentation, GitHub Submission, and Local Deployment  
+# Campusly Academic Portal &mdash; Integration, Testing, Security & Accessibility Report
+**System:** Campusly Unified Academic Gateway  
 **Candidate Name:** Jay Navadiya | **Roll No:** 25CS052  
 **Institute:** Chandubhai S. Patel Institute of Technology (CSPIT), CHARUSAT  
 **Repository:** [https://github.com/cs-cspit/Student-Portal-25CS052](https://github.com/cs-cspit/Student-Portal-25CS052)  
 **Database Name:** `studenthub` (compatible with `campusly`)  
 **Deployment URL:** `http://studenthub.local` / `http://127.0.0.1:8000`  
-**Date of Evaluation:** October 21, 2026  
+**Date of Evaluation:** October 2026  
 
 ---
 
 ## 📋 Executive Summary
 
-The **StudentHub Portal** (Campusly Academic Gateway) integrates all semester modules into a single, cohesive, production-grade web application. This document provides the holistic verification matrix, comprehensive security assessment, WCAG 2.1 AA accessibility audit, and deployment validation satisfying all criteria of Practical 15.
+The **Campusly Portal** brings together all campus academic management features into a single, cohesive, production-grade web application. This document provides the holistic verification matrix, comprehensive security assessment, WCAG 2.1 AA accessibility audit, and deployment validation for the complete system.
 
 ---
 

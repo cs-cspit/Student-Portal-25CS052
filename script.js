@@ -1,5 +1,5 @@
 /**
- * Practical 13: Fetch API Application Engine (script.js)
+ * Campusly Fetch API Application Engine (script.js)
  * System: Campusly (CHARUSAT CSPIT Academic Portal)
  * 
  * Features:

@@ -1,7 +1,6 @@
 <?php
 /**
- * Practical 9: User Registration Gateway (register.php)
- * Course: ITUE203 - Web Development Frameworks
+ * Campusly User Registration Gateway (register.php)
  * System: Campusly (CHARUSAT)
  * 
  * Objectives Implemented:
@@ -104,7 +103,7 @@ require_once __DIR__ . '/includes/header.php';
   <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
     <ol class="breadcrumbs">
       <li><a href="index.php">Home</a></li>
-      <li aria-current="page">Student Registration (Practical 9)</li>
+      <li aria-current="page">Student Registration</li>
     </ol>
   </nav>
 
@@ -156,7 +155,7 @@ require_once __DIR__ . '/includes/header.php';
             <img src="images/campusly-logo.png" alt="Campusly Logo" class="auth-card-logo">
           </div>
           <h2 class="auth-card-title">Join <span class="brand-text"><span class="brand-campus">Campus</span><span class="brand-ly">ly</span></span></h2>
-          <p class="auth-card-subtitle">Practical 9: Secure Registration with Validation & Hashed Storage</p>
+          <p class="auth-card-subtitle">Secure Registration with Validation &amp; Hashed Storage</p>
         </div>
 
         <form id="registration-form" action="register.php" method="POST" novalidate>

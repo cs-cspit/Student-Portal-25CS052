@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Session Timeout Handling (timeout.php)
+ * Campusly Session Timeout Handling (timeout.php)
  * System: Campusly Academic Portal
  * Enforces a strict 10-minute (600 seconds) inactivity timeout.
  */

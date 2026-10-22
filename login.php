@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Role Selection & Secure Login Gateway (login.php)
+ * Campusly Authentication & Login Gateway (login.php)
  * System: Campusly
  * 
  * Features:

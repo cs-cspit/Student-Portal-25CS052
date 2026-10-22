@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 12: Event Management CRUD with Poster Upload and File Validation
+ * Campusly Event Management CRUD with Poster Upload and File Validation
  * System: Campusly (StudentHub)
  * 
  * Features:
@@ -431,12 +431,12 @@ require_once __DIR__ . '/includes/header.php';
       </div>
     <?php endif; ?>
 
-    <!-- Executive Title & Practical Header Card -->
+    <!-- Executive Title & Header Card -->
     <section class="panel" style="padding: 2rem; border-radius: 16px; margin-bottom: 2rem; background: var(--panel-bg); border: 1px solid var(--panel-border); box-shadow: var(--card-shadow);">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;">
         <div>
           <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 102, 255, 0.08); padding: 5px 14px; border-radius: 9999px; margin-bottom: 0.75rem; border: 1px solid rgba(0, 102, 255, 0.2);">
-            <span style="font-size: 0.78rem; font-weight: 700; color: #0066ff; letter-spacing: 0.8px;">PRACTICAL 12 &bull; EVENT MANAGEMENT MODULE</span>
+            <span style="font-size: 0.78rem; font-weight: 700; color: #0066ff; letter-spacing: 0.8px;">CAMPUS EVENTS &bull; MANAGEMENT MODULE</span>
           </div>
           <h1 style="margin: 0; font-size: 1.85rem; color: var(--text-main); font-weight: 800;">
             Campus Events Management & Poster Upload
@@ -591,7 +591,7 @@ require_once __DIR__ . '/includes/header.php';
       </form>
     </section>
 
-    <!-- Master Event List with Uploaded Posters (Practical 12 Core Requirement) -->
+    <!-- Master Event List with Uploaded Posters -->
     <section class="panel" style="padding: 1.75rem; border-radius: 16px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 102, 255, 0.06);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
         <div>

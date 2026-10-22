@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Authentication Module (authenticate.php)
+ * Campusly Authentication Module (authenticate.php)
  * System: Campusly Academic Portal
  * Handles credential verification via password_verify() and session fixation defense via session_regenerate_id(true).
  */
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $upd->close();
             }
 
-            // Practical 14: Log successful authentication in audit_logs
+            // Log successful authentication in audit_logs
             $audit_stmt = $conn->prepare("INSERT INTO audit_logs (user_id, user_email, user_role, action, details, ip_address, created_at) VALUES (?, ?, ?, 'LOGIN_SUCCESS', 'User authenticated via password_verify() gateway', ?, NOW())");
             if ($audit_stmt) {
                 $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';

@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 11: Student Management CRUD with Search and Filter
+ * Campusly Student Management CRUD with Search and Filter
  * System: Campusly (CHARUSAT CSPIT Academic Portal)
  * 
  * Features:
@@ -247,7 +247,7 @@ require_once __DIR__ . '/includes/header.php';
       <?php else: ?>
         <li><a href="dashboard.php">Dashboard</a></li>
       <?php endif; ?>
-      <li aria-current="page">Student Management (Practical 11 CRUD)</li>
+      <li aria-current="page">Student Management</li>
     </ol>
   </nav>
 
@@ -259,7 +259,7 @@ require_once __DIR__ . '/includes/header.php';
       <section class="panel" style="padding: 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <div>
           <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 102, 255, 0.08); padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.5rem; border: 1px solid rgba(0, 102, 255, 0.2);">
-            <span style="font-size: 0.75rem; font-weight: 700; color: #0066ff; letter-spacing: 1px;">PRACTICAL 11 MODULE</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: #0066ff; letter-spacing: 1px;">STUDENT MANAGEMENT</span>
           </div>
           <h1 style="margin: 0; font-size: 1.8rem; line-height: 1.2;">Student Management (CRUD, Search &amp; Soft Delete)</h1>
           <p style="margin: 0.35rem 0 0 0; color: #64748b; font-size: 0.92rem;">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Practical 10: Student Dashboard (student_dashboard.php)
+ * Campusly Student Dashboard (student_dashboard.php)
  * System: Campusly Academic Portal
  * Dashboard accessible exclusively to Student users.
  */
@@ -93,7 +93,7 @@ if ($user_role !== 'student') {
   </main>
 
   <footer class="footer">
-    Campusly Academic Portal &bull; Practical 10 Role-Based Access Control (RBAC) &bull; CHARUSAT
+    Campusly Academic Portal &bull; Role-Based Access Control (RBAC) &bull; CHARUSAT
   </footer>
 </body>
 </html>
