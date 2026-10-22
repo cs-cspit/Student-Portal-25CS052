@@ -21,11 +21,17 @@ $activePage = $activePage ?? basename($_SERVER['PHP_SELF']);
   <link rel="icon" type="image/png" href="images/favicon.png">
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('campusly_theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTheme = urlParams.get('theme');
+      if (urlTheme === 'dark' || urlTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', urlTheme);
       } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+        const savedTheme = localStorage.getItem('campusly_theme');
+        if (savedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
       }
     })();
   </script>
