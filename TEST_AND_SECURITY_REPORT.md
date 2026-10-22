@@ -133,7 +133,7 @@ The application is fully configured for deployment on an Apache Web Server with 
 - [x] **Database Dump:** `studenthub.sql` generated with 3NF schema, tables, foreign keys, and seed data.
 - [x] **README.md File:** Comprehensive documentation with installation, configuration, testing, and deployment steps.
 - [x] **Test & Security Report:** Complete test matrix, security assessment, and accessibility checklist.
-- [x] **High-Brightness Screenshots:** Complete proof set captured in light theme mode and stored in `PRAC SS/PRACTICAL 15`.
+- [x] **UI Verification & Accessibility:** Complete test suite validated in high-contrast light theme mode conforming to WCAG 2.1 AA standards.
 
 **Report Approved by:**  
 Jay Navadiya (25CS052)  

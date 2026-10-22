@@ -33,9 +33,9 @@ For **Practical 15**, all semester modules have been unified into a single deplo
 |---|---|---|
 | **1. GitHub Repo Link** | Integrated open-source repository | [github.com/cs-cspit/Student-Portal-25CS052](https://github.com/cs-cspit/Student-Portal-25CS052) |
 | **2. Database Dump** | 3NF MySQL database export file | [`studenthub.sql`](studenthub.sql) |
-| **3. Documentation** | Complete setup, testing, and deployment guide | [`README.md`](README.md) |
-| **4. Test & Security Report** | Comprehensive test matrix, security & accessibility audit | [`TEST_AND_SECURITY_REPORT.md`](TEST_AND_SECURITY_REPORT.md) |
-| **5. Screenshots Proof** | High-resolution light theme captures | [`PRAC SS/PRACTICAL 15/`](PRAC%20SS/Practical%2015/) |
+| **3. Clean Database Schema** | Relational 3NF SQL schema & seed script | [`schema.sql`](schema.sql) |
+| **4. Documentation** | Complete setup, testing, and deployment guide | [`README.md`](README.md) |
+| **5. Test & Security Report** | Comprehensive test matrix, security & accessibility audit | [`TEST_AND_SECURITY_REPORT.md`](TEST_AND_SECURITY_REPORT.md) |
 
 ---
 
@@ -77,13 +77,17 @@ Yes. The Git repository is cleanly maintained with `.gitignore` filtering out te
 ├── README.md                      # Comprehensive Project Documentation
 ├── TEST_AND_SECURITY_REPORT.md    # Testing, Security & Accessibility Checklist
 ├── studenthub.sql                 # Complete MySQL 3NF Database Dump
-├── apache_studenthub_vhost.conf   # Apache Virtual Host Configuration (Intermediate Extension)
+├── schema.sql                     # Relational 3NF SQL Schema & Seed Script
+├── apache_studenthub_vhost.conf   # Apache Virtual Host Configuration
+├── Open_Campusly.command          # macOS One-Click Launch Script
 │
 ├── index.php                      # Portal Home & Module Gateway
 ├── login.php                      # Authentication Gateway (Student & Admin Tabs)
 ├── register.php                   # Student Self-Registration with Validation
 ├── logout.php                     # Secure Session Termination & Cookie Clearing
 ├── auth.php                       # Authentication Guard, RBAC Engine & Audit Logger
+├── auth_ping.php                  # Session Keep-Alive Endpoint
+├── authenticate.php               # Login Request Processor
 ├── db.php                         # Resilient MySQLi & PDO Connection Handler
 │
 ├── dashboard.php                  # Executive Admin Control Center & Analytics
@@ -94,23 +98,34 @@ Yes. The Git repository is cleanly maintained with `.gitignore` filtering out te
 ├── events.php                     # Campus Events Catalog & Junction Registrations
 ├── timetable.php                  # Weekly Academic Class Schedule
 ├── material.php                   # Course Syllabus & Resource Downloads
+├── profile.php                    # User Profile & Account Settings
 ├── about.php                      # About CSPIT, CDPC Placements & CIVF Incubation
 ├── contact.php                    # Campus Support & Help Desk
+├── timeout.php                    # Session Inactivity Timeout View
+│
+├── index.html                     # Single-Page Application (SPA) Interface
+├── script.js                      # Native Fetch API Engine for SPA CRUD
+├── style.css                      # Clean White-Themed Component Stylesheet
 │
 ├── css/
-│   └── styles.css                 # Unified Portal CSS, Responsive Grids & Light/Dark Theme
+│   ├── styles.css                 # Unified Portal CSS, Responsive Grids & Theme
+│   └── logo.png                   # Portal Icon Asset
 ├── js/
 │   ├── auth.js                    # Inactivity Timer & Session Warning Modal
 │   ├── intro.js                   # Cinematic Monogram Preloader Sequence
 │   └── live-bg.js                 # 60 FPS Constellation Particle Engine
 ├── images/
 │   ├── campusly-logo.png          # Official StudentHub Brand Mark
+│   ├── campusly-logo.jpg          # Brand Poster Image
 │   └── favicon.png                # Browser Favicon
 ├── includes/
 │   ├── header.php                 # Dynamic Navbar, Role Badges & Session Timer
 │   └── footer.php                 # Two-Pill Footer (About Us & Help Center)
-└── PRAC SS/
-    └── PRACTICAL 15/              # High-Resolution Light Mode Verification Screenshots
+├── uploads/
+│   ├── .htaccess                  # Directory Guard (Script Execution Disabled)
+│   ├── index.html                 # Direct Browsing Protection Guard
+│   └── posters/                   # Validated Event Poster Image Assets
+└── data/                          # Seed JSON Datasets (Events, FAQs, Students)
 ```
 
 ---
