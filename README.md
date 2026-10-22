@@ -1,4 +1,4 @@
-# 🎓 Campusly &mdash; Academic Enterprise Portal
+# 🎓 Campusly &mdash; Student Academic Portal
 
 <p align="center">
   <img src="images/campusly-logo.png" width="96" height="96" alt="Campusly Logo" style="border-radius: 18px; box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);">
@@ -6,53 +6,44 @@
 
 <p align="center">
   <strong>Learn &bull; Grow &bull; Belong</strong><br>
-  <em>Official Next-Generation Academic Gateway for Chandubhai S. Patel Institute of Technology (CSPIT) &bull; CHARUSAT</em><br>
+  <em>A unified academic portal built for Chandubhai S. Patel Institute of Technology (CSPIT), CHARUSAT</em><br>
   <strong>Developer:</strong> Jay Navadiya | <strong>ID:</strong> 25CS052 | <strong>Branch:</strong> B.Tech Computer Science & Engineering
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-8.x-777BB4?style=flat&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/CSS3-Responsive-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat" alt="License">
 </p>
 
 ---
 
-## 🌟 Overview & Architecture
+## 📌 About The Project
 
-**Campusly** (StudentHub) is a hardened, production-ready full-stack academic portal built using vanilla PHP, MySQL, and modern ES6 JavaScript. Designed from the ground up to solve campus workflow fragmentation, it integrates dual-role Role-Based Access Control (RBAC), asynchronous zero-refresh student management, campus events registration, and rigorous OWASP-aligned session security.
+Hey there! 👋 **Campusly** is a full-stack college portal I created to bring everyday campus tools together into one simple, unified place. Instead of jumping across different noticeboards, schedules, and spreadsheets, students and faculty can access everything from a clean, intuitive dashboard.
 
-### 🌟 Key Architectural Highlights
-- **Stateful Security:** 10-minute zero-drift inactivity guard with multi-tab `localStorage` synchronization and `session_regenerate_id()` fixation defense.
-- **Normalized Persistence:** 3NF relational schema with foreign key integrity and ACID-compliant transactional audit trails (`studenthub.sql`).
-- **RESTful Async Operations:** Native browser Fetch API engine for live search, real-time filtering, and zero-reload student CRUD.
-- **Enterprise RBAC:** Deterministic HTTP 403 access barriers strictly isolating Student portals from Executive Administration centers.
-- **Zero Runtime Dependencies:** Built purely on native PHP 8.x, MySQLi/PDO, and Vanilla JavaScript for maximum portability and performance.
+The entire platform is built with core **PHP**, **MySQL**, and vanilla **JavaScript** &mdash; completely free of heavy frameworks or external dependencies. It is fast, lightweight, and easy to run locally or host on any standard web server.
 
----
-
-## 🔗 Submission Deliverables Summary
-
-| Deliverable | Description / Location | Link / File Reference |
-|---|---|---|
-| **1. GitHub Repo Link** | Integrated open-source repository | [github.com/cs-cspit/Student-Portal-25CS052](https://github.com/cs-cspit/Student-Portal-25CS052) |
-| **2. Database Dump** | 3NF MySQL database export file | [`studenthub.sql`](studenthub.sql) |
-| **3. Clean Database Schema** | Relational 3NF SQL schema & seed script | [`schema.sql`](schema.sql) |
-| **4. Documentation** | Complete setup, testing, and deployment guide | [`README.md`](README.md) |
-| **5. Test & Security Report** | Comprehensive test matrix, security & accessibility audit | [`TEST_AND_SECURITY_REPORT.md`](TEST_AND_SECURITY_REPORT.md) |
+### ✨ What It Can Do
+- 🔐 **Dual Role Access:** Separate portals for Students and Admins, protected by secure password hashing (Bcrypt) and an automatic 10-minute inactivity logout.
+- ⚡ **Real-Time Student Management:** Add, update, and search student records live using Fetch API / AJAX without page reloads.
+- 📅 **Campus Events & Posters:** Browse upcoming hackathons and workshops, register with a single click, and upload event posters.
+- 📚 **Academics at a Glance:** Access weekly class timetables, syllabus downloads, and study materials anytime.
+- 🗄️ **Clean Database Design:** Structured in 3NF with MySQL foreign keys, prepared statements to prevent SQL injection, and an audit trail for security.
+- 📱 **Clean Responsive UI:** Works smoothly on desktop and mobile with comfortable light styling and accessible typography.
 
 ---
 
-## 🔍 Key Questions & Architectural Analysis
+## 🔗 Key Project Files
 
-### 1. Are all pages properly linked and navigable?
-Yes. Every module (`index.php`, `login.php`, `register.php`, `dashboard.php`, `student_dashboard.php`, `students.php`, `events.php`, `timetable.php`, `material.php`, `about.php`, `contact.php`) shares a unified navigation header and modern two-pill footer (`includes/header.php`, `includes/footer.php`). Active routes are visually highlighted, breadcrumb trails provide clear hierarchy, and there are zero broken internal links.
-
-### 2. Are sessions, roles, validations, and database operations working end-to-end?
-Yes. Sessions utilize `session_regenerate_id(true)` to defeat session fixation, synchronized across tabs via epoch wall-clock timestamps. Role checks strictly isolate the Administrator Control Center from Student features. Dual-layer validation guarantees data hygiene on both client and server before persisting changes to MySQL via prepared statements.
-
-### 3. Are security and accessibility checklists completed?
-Yes. The platform passes OWASP security requirements (SQL Injection, Bcrypt password hashing, Cross-Site Scripting HTML-escaping, RBAC 403 interception) and meets WCAG 2.1 Level AA accessibility standards with high-contrast light mode styling, semantic HTML5, explicit labels, and visible keyboard focus rings. Full details are documented in [`TEST_AND_SECURITY_REPORT.md`](TEST_AND_SECURITY_REPORT.md).
-
-### 4. Is project documentation sufficient for installation and testing?
-Yes. This `README.md` provides complete, turnkey commands for running the portal via PHP built-in server or configuring an Apache Virtual Host (`studenthub.local`), importing the database, and executing end-to-end test cases.
-
-### 5. Is the project repository clean and properly committed?
-Yes. The Git repository is cleanly maintained with `.gitignore` filtering out temporary files, descriptive commit messages, and a synchronized `main` branch hosted on GitHub.
+| File | Description |
+|---|---|
+| [`studenthub.sql`](studenthub.sql) | Full MySQL database dump (3NF schema with foreign keys and seed data) |
+| [`schema.sql`](schema.sql) | Clean schema definition script for setting up tables |
+| [`TEST_AND_SECURITY_REPORT.md`](TEST_AND_SECURITY_REPORT.md) | Full testing checklist, security audit, and accessibility notes |
+| [`apache_studenthub_vhost.conf`](apache_studenthub_vhost.conf) | Virtual Host configuration for `http://studenthub.local` |
 
 ---
 
