@@ -1,4 +1,4 @@
-# Campusly (StudentHub) &mdash; Final Project Overview
+# 🎓 Campusly &mdash; Academic Enterprise Portal
 
 <p align="center">
   <img src="images/campusly-logo.png" width="96" height="96" alt="Campusly Logo" style="border-radius: 18px; box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);">
@@ -7,23 +7,21 @@
 <p align="center">
   <strong>Learn &bull; Grow &bull; Belong</strong><br>
   <em>Official Next-Generation Academic Gateway for Chandubhai S. Patel Institute of Technology (CSPIT) &bull; CHARUSAT</em><br>
-  <strong>Candidate:</strong> Jay Navadiya | <strong>ID:</strong> 25CS052 | <strong>Branch:</strong> B.Tech Computer Science & Engineering
+  <strong>Developer:</strong> Jay Navadiya | <strong>ID:</strong> 25CS052 | <strong>Branch:</strong> B.Tech Computer Science & Engineering
 </p>
 
 ---
 
-## 🌟 Overview & Problem Definition
+## 🌟 Overview & Architecture
 
-**StudentHub** (Campusly) is a production-grade, hardened academic portal built for the **Chandubhai S. Patel Institute of Technology (CSPIT)** at **CHARUSAT**. 
+**Campusly** (StudentHub) is a hardened, production-ready full-stack academic portal built using vanilla PHP, MySQL, and modern ES6 JavaScript. Designed from the ground up to solve campus workflow fragmentation, it integrates dual-role Role-Based Access Control (RBAC), asynchronous zero-refresh student management, campus events registration, and rigorous OWASP-aligned session security.
 
-For **Practical 15**, all semester modules have been unified into a single deployable full-stack application:
-- Seamless multi-page navigation and dynamic role-based headers/footers
-- Dual-role authentication and session statefulness with 10-minute zero-drift inactivity guard
-- Strict Role-Based Access Control (RBAC) with HTTP 403 authorization barriers
-- Relational 3NF MySQL Database (`studenthub.sql`) with foreign key constraints
-- RESTful JSON API (`api.php`) enabling asynchronous AJAX/Fetch CRUD without page reloads
-- Real-time administrative controls, user status toggling, and relational security audit logging (`audit_logs`)
-- Local deployment support for both **Apache Virtual Hosts (`studenthub.local`)** and PHP built-in server
+### 🌟 Key Architectural Highlights
+- **Stateful Security:** 10-minute zero-drift inactivity guard with multi-tab `localStorage` synchronization and `session_regenerate_id()` fixation defense.
+- **Normalized Persistence:** 3NF relational schema with foreign key integrity and ACID-compliant transactional audit trails (`studenthub.sql`).
+- **RESTful Async Operations:** Native browser Fetch API engine for live search, real-time filtering, and zero-reload student CRUD.
+- **Enterprise RBAC:** Deterministic HTTP 403 access barriers strictly isolating Student portals from Executive Administration centers.
+- **Zero Runtime Dependencies:** Built purely on native PHP 8.x, MySQLi/PDO, and Vanilla JavaScript for maximum portability and performance.
 
 ---
 
