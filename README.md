@@ -57,7 +57,7 @@ The entire platform is built with core **PHP**, **MySQL**, and vanilla **JavaScr
 |---|---|---|---|---|
 | **Administrator** | Admin | `admin@campusly.com` | `Admin@123` | Executive Admin Control Center, User Status Toggle, Audit Logs |
 | **Jay Navadiya** | Student | `jay@campusly.com` | `Student@123` | Student Dashboard, Enrolled Courses, Event Registrations |
-| **Kavya Patel** | Student | `student@campusly.com` | `Student@123` | Student Dashboard & Academic Materials |
+| **Jash Patel** | Student | `student@campusly.com` | `Student@123` | Student Dashboard & Academic Materials |
 | **Bhavy Gol** | Student | `bhavy@campusly.com` | `Student@123` | Student Academic View |
 
 *Users can log in using either their username (`admin`, `jay`, `student`) or their full email address.*

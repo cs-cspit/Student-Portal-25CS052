@@ -132,13 +132,13 @@ INSERT INTO registrations (reg_id, student_id, event_id, registered_at) VALUES
 INSERT INTO users (user_id, name, email, password_hash, role, status, last_login, created_at, student_id) VALUES
 (1, 'Administrator', 'admin@campusly.com', '$2y$12$nah.j6ixJ8ZOl33C.6kyouGO3kDb5n.KK.zOJDtTFnslMpmKjImbq', 'admin', 'Active', NOW(), '2026-10-14 23:53:24', NULL),
 (2, 'Jay Navadiya', 'jay@campusly.com', '$2y$12$0YY8yE51ZMgUQlbHx8h.AeqEnzcjke5n7E.VAdlKwV8RwPbImdbVO', 'student', 'Active', NOW(), '2026-10-14 23:53:24', 1),
-(3, 'Kavya Patel', 'student@campusly.com', '$2y$12$0YY8yE51ZMgUQlbHx8h.AeqEnzcjke5n7E.VAdlKwV8RwPbImdbVO', 'student', 'Active', '2026-10-14 23:53:24', '2026-10-14 23:53:24', 2),
+(3, 'Jash Patel', 'student@campusly.com', '$2y$12$0YY8yE51ZMgUQlbHx8h.AeqEnzcjke5n7E.VAdlKwV8RwPbImdbVO', 'student', 'Active', '2026-10-14 23:53:24', '2026-10-14 23:53:24', 2),
 (4, 'Bhavy Gol', 'bhavy@campusly.com', '$2y$12$0YY8yE51ZMgUQlbHx8h.AeqEnzcjke5n7E.VAdlKwV8RwPbImdbVO', 'student', 'Active', '2026-10-14 23:53:24', '2026-10-14 23:53:24', NULL);
 
 -- Audit Logs
 INSERT INTO audit_logs (user_id, user_email, user_role, action, details, ip_address, created_at) VALUES
 (1, 'admin@campusly.com', 'admin', 'LOGIN_SUCCESS', 'Administrator authenticated successfully via secure password_verify()', '127.0.0.1', '2026-10-21 09:30:12'),
-(1, 'admin@campusly.com', 'admin', 'USER_STATUS_TOGGLE', 'Toggled user status for Account #3 (kavya@campusly.com) to Active', '127.0.0.1', '2026-10-21 10:14:05'),
+(1, 'admin@campusly.com', 'admin', 'USER_STATUS_TOGGLE', 'Toggled user status for Account #3 (jash@campusly.com) to Active', '127.0.0.1', '2026-10-21 10:14:05'),
 (1, 'admin@campusly.com', 'admin', 'EVENT_CREATE', 'Published new campus event: AI Workshop (Venue: Auditorium)', '127.0.0.1', '2026-10-21 11:02:40'),
 (2, 'jay@campusly.com', 'student', 'UNAUTHORIZED_ACCESS_403', 'Access Violation: Student attempted to access restricted Admin Dashboard /dashboard.php (HTTP 403 Blocked)', '127.0.0.1', '2026-10-21 12:45:18'),
 (1, 'admin@campusly.com', 'admin', 'USER_ROLE_CHANGE', 'Promoted user #4 permissions to verified Student', '127.0.0.1', '2026-10-21 13:10:22'),
