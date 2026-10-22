@@ -19,7 +19,9 @@
 </p>
 
 <p align="center">
-  <img src="images/preview.png" alt="Campusly Portal Preview" width="100%" style="border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+  <a href="images/preview.png" target="_blank" rel="noopener noreferrer">
+    <img src="images/preview.png" alt="Campusly Academic Portal - High Resolution Light Theme Preview" width="100%" style="border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 16px 40px -8px rgba(0, 102, 255, 0.15);">
+  </a>
 </p>
 
 ---
